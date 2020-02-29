@@ -1,11 +1,11 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
 
-const Signin = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, password }) => {
+const Login = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, password }) => {
     return (
-        <div className="Signin">
+        <div className="Login">
             <form onSubmit={handleSubmit}>
-                <div className='from-group'>
+                <div className='form-group'>
                     <label htmlFor='cNumber'>
                         Número de colegiado
                     </label>
@@ -22,9 +22,9 @@ const Signin = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, 
                     />
                 </div>
 
-                <div className='from-group mb5'>
+                <div className='form-group mb4'>
                     <label htmlFor='password'>
-                        Número de colegiado
+                        Contraseña
                     </label>
 
                     <input
@@ -40,8 +40,8 @@ const Signin = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, 
 
                 <button
                     type='submit'
-                    className='btn btn-block btn-primary mb-4'
-                    disable={loading}
+                    className='btn btn-block btn-primary mb-3'
+                    disabled={loading}
                 >
                     Sign In
                 </button>
@@ -50,4 +50,4 @@ const Signin = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, 
     )
 }
 
-export default WithAuthConsumer(Signin)
+export default WithAuthConsumer(Login)

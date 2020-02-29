@@ -1,16 +1,16 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-import Signin from '../ui/Signin'
+import Login from '../ui/Login'
 import { WithAuthConsumer } from '../context/AuthContext'
 import IronClinicService from '../services/IronClinicService'
 
 
-class SigninForm extends React.Component {
+class LoginForm extends React.Component {
 
     state = {
         data: {
-            cNumber: null,
+            cNumber: '',
             password: ''
         },
         error: false,
@@ -50,14 +50,14 @@ class SigninForm extends React.Component {
         if (this.props.currentUser) {
             return <Redirect to="/" />
         }
-        return <Signin errorClassName={errorClassName}
+        return <Login errorClassName={errorClassName}
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
             loading={this.state.loading}
-            cNumber={this.state.cNumber}
-            password={this.state.password} />
+            cNumber={this.state.data.cNumber}
+            password={this.state.data.password} />
 
     }
 }
 
-export default WithAuthConsumer(SigninForm)
+export default WithAuthConsumer(LoginForm)

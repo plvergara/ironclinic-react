@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000',
+    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000',
     withCredentials: true
 })
 
@@ -21,7 +21,27 @@ const login = ({ cNumber, password }) => http.post('/login', { cNumber, password
 
 const logout = () => http.post('/logout')
 
+const createPro = data => http.post('/professionals', data)
+
+const createPatient = data => {
+    const identification = {
+        format: data.idFormat,
+        number: data.idNumber
+    }
+    return http.post('/patients', { ...data, identification })
+}
+
+const listAPro = professional => http.get(`/appointments/professionals?search=${professional}`)
+
+const listPro = () => http.get('/professionals')
+const listPat = _ => http.get('/patients')
+
 export default {
     login,
-    logout
+    logout,
+    listAPro,
+    listPro,
+    createPro,
+    createPatient,
+    listPat
 }

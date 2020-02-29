@@ -5,7 +5,7 @@ import { WithAuthConsumer } from '../context/AuthContext'
 
 const AuthenticatedRoute = (props) => {
     if (!props.currentUser) {
-        return <Redirect to='/sigin' />
+        return <Redirect to='/login' />
     } else {
         return <Route {...props} />
     }
