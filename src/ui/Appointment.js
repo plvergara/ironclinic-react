@@ -1,5 +1,6 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 const ListAppointments = ({ appointment }) => {
     const { patient, professional, date, startHour, endHour } = appointment
@@ -13,9 +14,10 @@ const ListAppointments = ({ appointment }) => {
                 <p className="card-text">
                     {patient.firstName} {patient.lastName}
                 </p>
+                <Link to={`/patients/${patient.id}/medicalhistory`} className="d-block">Historia Clínica</Link>
 
 
-                <a href="/TODO" className="d-block">{professional.firstName} {professional.lastName}</a>
+                <Link to="/TODO" className="d-block">{professional.firstName} {professional.lastName}</Link>
             </div>
         </div>
     )

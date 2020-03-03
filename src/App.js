@@ -11,6 +11,7 @@ import ProfessionalForm from './components/ProfessionalForm'
 import PatientForm from './components/PatientForm'
 import ShowPatients from './components/ShowPatients'
 import AppointmentForm from './components/AppointmentForm'
+import MHForm from './components/MHForm'
 
 class App extends React.Component {
   render() {
@@ -34,12 +35,16 @@ class App extends React.Component {
             <AuthenticatedRoute exact path='/patients'>
               <ShowPatients />
             </AuthenticatedRoute>
+            <AuthenticatedRoute exact path='/patients/:id/medicalhistory' component={MHForm} />
+
+
+
             <Route exact path='/login'>
               <Login />
             </Route>
           </Switch>
         </main>
-      </div>
+      </div >
     )
   }
 }
