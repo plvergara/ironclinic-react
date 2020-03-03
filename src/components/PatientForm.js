@@ -13,7 +13,9 @@ class CreatePatient extends React.Component {
             idFormat: '',
             idNumber: '',
             firstName: '',
-            lastName: ''
+            lastName: '',
+            patients: [],
+            professionals: [],
         },
         sucess: false,
         error: false,

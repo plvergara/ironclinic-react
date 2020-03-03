@@ -31,6 +31,8 @@ const createPatient = data => {
     return http.post('/patients', { ...data, identification })
 }
 
+const createAppointment = data => http.post('/appointments', data)
+
 const listAPro = professional => http.get(`/appointments/professionals?search=${professional}`)
 
 const listPro = () => http.get('/professionals')
@@ -43,5 +45,6 @@ export default {
     listPro,
     createPro,
     createPatient,
+    createAppointment,
     listPat
 }

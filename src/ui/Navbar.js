@@ -33,6 +33,11 @@ const Navbar = ({ currentUser, logout }) => {
                             </Link>
                         </div>
                         <div>
+                            <Link className="btn btn-md" to='/appointments/create' >
+                                Nueva Cita
+                            </Link>
+                        </div>
+                        <div>
                             <Link className="btn btn-md" to='/patients' >
                                 Ver Pacientes
                             </Link>

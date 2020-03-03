@@ -10,6 +10,7 @@ import Login from './components/Login'
 import ProfessionalForm from './components/ProfessionalForm'
 import PatientForm from './components/PatientForm'
 import ShowPatients from './components/ShowPatients'
+import AppointmentForm from './components/AppointmentForm'
 
 class App extends React.Component {
   render() {
@@ -26,6 +27,9 @@ class App extends React.Component {
             </AuthenticatedRoute>
             <AuthenticatedRoute exact path='/patients/create'>
               <PatientForm />
+            </AuthenticatedRoute>
+            <AuthenticatedRoute exact path='/appointments/create'>
+              <AppointmentForm />
             </AuthenticatedRoute>
             <AuthenticatedRoute exact path='/patients'>
               <ShowPatients />
