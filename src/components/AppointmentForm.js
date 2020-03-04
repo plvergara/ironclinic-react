@@ -69,7 +69,6 @@ class CreateAppointment extends React.Component {
         event.preventDefault()
 
         this.setState({ loading: true, error: false }, () => {
-            console.info(this.state.data)
             IronClinicService.createAppointment({ ...this.state.data })
                 .then(() => {
                     this.setState({ success: true })

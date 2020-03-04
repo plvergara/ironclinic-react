@@ -1,35 +1,44 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
+import { Form, Button } from 'react-bootstrap'
 
-const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, patient, illnesses, allergies, surgeries, medications, diagnosticJudgment }) => {
+const MHForm = ({ errorClassName,
+    handleSubmit,
+    handleChange,
+    loading,
+    patient,
+    illnesses,
+    allergies,
+    surgeries,
+    medications,
+    diagnosticJudgment }) => {
 
     return (
-        <div className="AppointmentForm">
-            <form onSubmit={handleSubmit}>
-                <h4 className='form-group'>
-                    {patient.firstName} {patient.lastName}
-                </h4>
-                <div className='form-group'>
-                    <label htmlFor='illnesses'>
-                        Enfermedades
-                    </label>
+        <div className="MHForm w-100">
+            <Form className="w-100 mb-5 mt-5 bx-shadow bg-white p-5" onSubmit={handleSubmit}>
+                <Form.Control plaintext readOnly defaultValue={patient.firstName} />
+                <Form.Control plaintext readOnly defaultValue={patient.lastName} />
 
-                    <input
+                <Form.Group>
+                    <Form.Label>
+                        Enfermedades
+                    </Form.Label>
+
+                    <Form.Control
                         value={illnesses}
                         onChange={handleChange}
                         name='illnesses'
                         type='string'
                         className={`form-control ${errorClassName}`}
-                        id='illnesses'
                         placeholder='Enfermedades'
                     />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='allergies'>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>
                         Alergias
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={allergies}
                         onChange={handleChange}
                         name='allergies'
@@ -38,14 +47,14 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                         id='allergies'
                         placeholder='Alergias'
                     />
-                </div>
+                </Form.Group>
 
-                <div className='form-group'>
-                    <label htmlFor='surgeries'>
+                <Form.Group>
+                    <Form.Label>
                         Intervenciones
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={surgeries}
                         onChange={handleChange}
                         name='surgeries'
@@ -54,14 +63,14 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                         id='surgeries'
                         placeholder='Intervenciones'
                     />
-                </div>
+                </Form.Group>
 
-                <div className='form-group'>
-                    <label htmlFor='medications'>
+                <Form.Group>
+                    <Form.Label>
                         Medicamentos
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={medications}
                         onChange={handleChange}
                         name='medications'
@@ -70,14 +79,14 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                         id='medications'
                         placeholder='Medicamentos'
                     />
-                </div>
+                </Form.Group>
 
-                <div className='form-group'>
-                    <label htmlFor='diagnosticJudgment'>
+                <Form.Group>
+                    <Form.Label>
                         Juicio diagnóstico
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={diagnosticJudgment}
                         onChange={handleChange}
                         name='diagnosticJudgment'
@@ -86,19 +95,19 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                         id='diagnosticJudgment'
                         placeholder='Juicio diagnóstico'
                     />
-                </div>
+                </Form.Group>
 
 
-                <button
+                <Button
                     type='submit'
-                    className='btn btn-block btn-primary mb-3'
+                    className='btn btn-block btn-submit text-white mb-3'
                     disabled={loading}
                 >
-                    Añadir
-                </button>
-            </form>
+                    Aceptar
+                </Button>
+            </Form>
         </div>
     )
 }
 
-export default WithAuthConsumer(AppointmentForm)
+export default WithAuthConsumer(MHForm)

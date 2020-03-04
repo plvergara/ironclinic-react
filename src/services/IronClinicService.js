@@ -22,6 +22,10 @@ const login = ({ cNumber, password }) => http.post('/login', { cNumber, password
 const logout = () => http.post('/logout')
 
 const createPro = data => http.post('/professionals', data)
+const listPro = () => http.get('/professionals')
+const listProfessional = id => http.get(`/professionals/${id}`)
+const updateProfessional = (id, data) => http.patch(`/professionals/${id}`, data)
+const deleteProfessional = id => http.delete(`/professionals/${id}`)
 
 const createPatient = data => {
     const identification = {
@@ -30,25 +34,40 @@ const createPatient = data => {
     }
     return http.post('/patients', { ...data, identification })
 }
-
-const createAppointment = data => http.post('/appointments', data)
-const createMedicalHistory = (patient, data) => http.post(`/patients/${patient}/medicalhistory`, data)
-
-const listAPro = professional => http.get(`/appointments/professionals?search=${professional}`)
-
-const listPro = () => http.get('/professionals')
 const listPat = _ => http.get('/patients')
 const listPatient = data => http.get(`/patients/${data}`)
+const updatePatient = (id, data) => http.patch(`/patients/${id}`, data)
+
+const createAppointment = data => http.post('/appointments', data)
+const listAppointment = id => http.get(`/appointments/${id}`)
+const updateAppointment = (id, data) => http.patch(`/appointments/${id}`, data)
+const listAPro = professional => http.get(`/appointments/professionals?search=${professional}`)
+const listAPat = patient => http.get(`/appointments/patients?search=${patient}`)
+const listADate = date => http.get(`/appointments/date?date=${date}`)
+
+const createMedicalHistory = (id, data) => http.post(`/patients/${id}/medicalhistory`, data)
+const listMedicalHistory = (id) => http.get(`/patients/${id}/medicalhistory`)
+const updateMedicalHistory = (id, data) => http.patch(`/patients/${id}/medicalhistory`, data)
 
 export default {
     login,
     logout,
     listAPro,
     listPro,
+    listAPat,
     createPro,
     createPatient,
     createAppointment,
     listPat,
     listPatient,
-    createMedicalHistory
+    createMedicalHistory,
+    listADate,
+    listAppointment,
+    updateAppointment,
+    deleteProfessional,
+    listProfessional,
+    listMedicalHistory,
+    updateMedicalHistory,
+    updateProfessional,
+    updatePatient
 }

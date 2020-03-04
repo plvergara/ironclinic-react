@@ -3,8 +3,8 @@ import { WithAuthConsumer } from '../context/AuthContext'
 
 const ProfessionalForm = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, password, firstName, lastName, specialty }) => {
     return (
-        <div className="ProfessionalForm">
-            <form onSubmit={handleSubmit}>
+        <div className="ProfessionalForm w-100">
+            <form className="w-100 mb-5 mt-5 bx-shadow bg-white p-5" onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label htmlFor='firstName'>
                         Nombre
@@ -88,10 +88,10 @@ const ProfessionalForm = ({ errorClassName, handleSubmit, handleChange, loading,
 
                 <button
                     type='submit'
-                    className='btn btn-block btn-primary mb-3'
+                    className='btn btn-block btn-submit text-white mb-3'
                     disabled={loading}
                 >
-                    Añadir
+                    Aceptar
                 </button>
             </form>
         </div>

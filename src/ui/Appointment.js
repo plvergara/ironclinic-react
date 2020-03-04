@@ -1,25 +1,35 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 
 const ListAppointments = ({ appointment }) => {
-    const { patient, professional, date, startHour, endHour } = appointment
+    const { patient, professional, date, startHour, treatment } = appointment
     const day = new Date(date)
-    console.info(typeof (day), day)
+    const sHour = new Date(startHour)
     return (
-        <div className="card w-100 mb-3">
-            <div className="card-body">
-                <p className="card-subtitle mb-2 text-muted">{day.getDate()}/{day.getMonth() + 1}/{day.getFullYear()}</p>
+        <Card className="bx-shadow mb-2" style={{ width: '18rem' }}>
+            <Card.Body>
+                <Card.Title className="bg-info"><span className="h5 col-6 text-white">{sHour.getHours().toString().padStart(2, 0)} : {sHour.getMinutes().toString().padStart(2, 0)}</span>
+                    <span className="h6 col-4 text-light">{day.getDate().toString().padStart(2, 0)}/{(day.getMonth() + 1).toString().padStart(2, 0)}/{day.getUTCFullYear()}</span>
+                </Card.Title>
 
-                <p className="card-text">
-                    {patient.firstName} {patient.lastName}
-                </p>
-                <Link to={`/patients/${patient.id}/medicalhistory`} className="d-block">Historia Clínica</Link>
+                <Card.Text>
+                    <span>{patient.firstName} {patient.lastName}</span><br />
+                    <span>{professional.firstName} {professional.lastName}</span><br />
+                    <span>{treatment}</span>
+                </Card.Text>
+                {patient.number && (
+                    <Link to={`/appointments/${appointment.id}`} className="btn btn-submit text-white">Ir</Link>
+                )}
+                {!patient.number && (
+                    <Link to={`/patients/${patient.id}/medicalhistory`} className="btn btn-submit text-white">Ir</Link>
+                )}
 
 
-                <Link to="/TODO" className="d-block">{professional.firstName} {professional.lastName}</Link>
-            </div>
-        </div>
+
+            </Card.Body >
+        </Card >
     )
 }
 

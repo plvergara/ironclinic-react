@@ -16,7 +16,6 @@ class CreateMedicalHistory extends React.Component {
             diagnosticJudgment: '',
             patient: '',
         },
-        patient: '',
         sucess: false,
         error: false,
         loading: false
@@ -25,6 +24,8 @@ class CreateMedicalHistory extends React.Component {
     componentDidMount() {
         IronClinicService.listPatient(this.props.match.params.id)
             .then(patient => this.setState({ data: { patient: patient } }))
+
+
     }
 
     handleChange = (event) => {
@@ -40,7 +41,6 @@ class CreateMedicalHistory extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        console.info(this.state.data)
 
         this.setState({ loading: true, error: false }, () => {
             IronClinicService.createMedicalHistory(this.state.data.patient.id, { ...this.state.data })
@@ -69,7 +69,8 @@ class CreateMedicalHistory extends React.Component {
             illnesses={this.state.data.illnesses}
             allergies={this.state.data.allergies}
             medications={this.state.data.medications}
-            diagnosticJudgment={this.state.data.diagnosticJudgment} />
+            diagnosticJudgment={this.state.data.diagnosticJudgment}
+        />
 
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
 import Select from 'react-select'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 
 const PatientForm = ({ errorClassName, handleSubmit, handleChange, loading, idFormat, idNumber, firstName, lastName, phoneNumber }) => {
     const format = [{ value: 'DNI', label: 'DNI' },
@@ -8,14 +9,14 @@ const PatientForm = ({ errorClassName, handleSubmit, handleChange, loading, idFo
     { value: 'Otro', label: 'Otro' }]
 
     return (
-        <div className="PatientForm">
-            <form onSubmit={handleSubmit}>
-                <div className='form-group'>
-                    <label htmlFor='firstName'>
+        <div className="PatientForm w-100">
+            <Form className="w-100 mb-5 mt-5 bx-shadow bg-white p-5" onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>
                         Nombre
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={firstName}
                         onChange={handleChange}
                         autoComplete='off'
@@ -25,13 +26,13 @@ const PatientForm = ({ errorClassName, handleSubmit, handleChange, loading, idFo
                         id='firstName'
                         placeholder='Nombre'
                     />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='lastName'>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>
                         Apellidos
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={lastName}
                         onChange={handleChange}
                         autoComplete='off'
@@ -41,13 +42,13 @@ const PatientForm = ({ errorClassName, handleSubmit, handleChange, loading, idFo
                         id='lastName'
                         placeholder='Apellidos'
                     />
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='phoneNumber'>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>
                         Número de teléfono
-                    </label>
+                    </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={phoneNumber}
                         onChange={handleChange}
                         autoComplete='off'
@@ -57,34 +58,42 @@ const PatientForm = ({ errorClassName, handleSubmit, handleChange, loading, idFo
                         id='phoneNumber'
                         placeholder='nº teléfono'
                     />
-                </div>
+                </Form.Group>
 
-                <div className='form-group mb4'>
-                    <Select
-                        options={format}
-                        onChange={handleChange}
-                        className={`form-control ${errorClassName}`}
-                    />
+                <Form.Group>
+                    <Form.Label>
+                        Documento de identidad
+                    </Form.Label>
+                    <Row>
+                        <Col>
+                            <Select
+                                options={format}
+                                onChange={handleChange}
+                                className={`form-control clean ${errorClassName}`}
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                value={idNumber}
+                                onChange={handleChange}
+                                name='idNumber'
+                                type='string'
+                                className={`form-control ${errorClassName}`}
+                                id='idNumber'
+                                placeholder='Número de documento'
+                            />
+                        </Col>
+                    </Row>
+                </Form.Group>
 
-                    <input
-                        value={idNumber}
-                        onChange={handleChange}
-                        name='idNumber'
-                        type='string'
-                        className={`form-control ${errorClassName}`}
-                        id='idNumber'
-                        placeholder='Número de documento'
-                    />
-                </div>
-
-                <button
+                <Button
                     type='submit'
-                    className='btn btn-block btn-primary mb-3'
+                    className='btn btn-block btn-submit text-white mb-3'
                     disabled={loading}
                 >
-                    Añadir
-                </button>
-            </form>
+                    Aceptar
+                </Button>
+            </Form>
         </div>
     )
 }

@@ -1,16 +1,18 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
+import { Form } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const Login = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, password }) => {
     return (
-        <div className="Login">
-            <form onSubmit={handleSubmit}>
-                <div className='form-group'>
-                    <label htmlFor='cNumber'>
+        <div className='Login'>
+            <Form className="LoginForm" onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label>
                         Número de colegiado
-                    </label>
+                </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={cNumber}
                         onChange={handleChange}
                         autoComplete='off'
@@ -20,14 +22,14 @@ const Login = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, p
                         id='cNumber'
                         placeholder='Introduce tu número de colegiado'
                     />
-                </div>
+                </Form.Group>
 
-                <div className='form-group mb4'>
-                    <label htmlFor='password'>
+                <Form.Group className='mb4'>
+                    <Form.Label>
                         Contraseña
-                    </label>
+                </Form.Label>
 
-                    <input
+                    <Form.Control
                         value={password}
                         onChange={handleChange}
                         name='password'
@@ -36,16 +38,16 @@ const Login = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, p
                         id='password'
                         placeholder='Contraseña'
                     />
-                </div>
+                </Form.Group>
 
-                <button
+                <Button
                     type='submit'
-                    className='btn btn-block btn-primary mb-3'
+                    className='btn btn-block btn-submit text-white'
                     disabled={loading}
                 >
-                    Sign In
-                </button>
-            </form>
+                    Acceder
+                </Button>
+            </Form>
         </div>
     )
 }

@@ -1,53 +1,41 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 
 
-const Navbar = ({ currentUser, logout }) => {
+const Nvbar = ({ currentUser, logout }) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light mb-5 border-bottom border-light">
-            <div className="container d-flex align-items-center">
-                <div>
-                    <Link className="navbar-brand" to="/">
-                        <i className="fa fa-heartbeat" />
-                        <strong>Iron</strong>Clinic
-                    </Link>
-                </div>
+        <Navbar className="bx-shadow" sticky="top" bg='light' expand='lg'>
+            <Navbar.Brand href='/'>
+                <i className="fa fa-heartbeat" />
+                <strong>Iron</strong>Clinic
+            </Navbar.Brand>
 
-                {currentUser && (
-                    <div className="navbar-right">
-                        <div>
-                            <button className="btn btn-danger btn-sm" onClick={logout}>
-                                <i className="fa fa-power-off" />
-                            </button>
-                        </div>
 
-                        <div>
-                            <Link className="btn btn-md" to='/professionals/create' >
-                                Nuevo Profesional
-                            </Link>
-                        </div>
-                        <div>
-                            <Link className="btn btn-md" to='/patients/create' >
-                                Nuevo Paciente
-                            </Link>
-                        </div>
-                        <div>
-                            <Link className="btn btn-md" to='/appointments/create' >
-                                Nueva Cita
-                            </Link>
-                        </div>
-                        <div>
-                            <Link className="btn btn-md" to='/patients' >
-                                Ver Pacientes
-                            </Link>
-                        </div>
-                    </div>
-                )}
 
-            </div>
-        </nav>
+            {currentUser && (
+                <Nav className="ml-auto">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+
+                        <Nav.Link href="/professionals/create">Nuevo Profesional</Nav.Link>
+                        <Nav.Link href="/patients/create">Nuevo Paciente</Nav.Link>
+                        <Nav.Link href="/appointments/create">Nueva Cita</Nav.Link>
+                        <Nav.Link href="/patients">Ver Pacientes</Nav.Link>
+                        <Nav.Link href="/professionals">Ver Profesionales</Nav.Link>
+
+                    </Navbar.Collapse>
+                </Nav>
+
+            )}
+            {currentUser && (
+                <Button className="ml-3" variant="danger" onClick={logout}>
+                    <i className="fa fa-power-off text-white m-auto" />
+                </Button>
+            )}
+
+        </Navbar>
     )
 }
 
-export default WithAuthConsumer(Navbar)
+export default WithAuthConsumer(Nvbar)

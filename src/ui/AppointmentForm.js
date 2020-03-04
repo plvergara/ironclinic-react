@@ -1,6 +1,8 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
-import Select, { components } from 'react-select'
+import Select from 'react-select'
+import { Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, professionals, patients, date, startHour, endHour }) => {
     const treatmentConst = [
@@ -14,8 +16,8 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
         { name: 'treatment', value: 'otro', label: 'otro' }]
 
     return (
-        <div className="AppointmentForm">
-            <form onSubmit={handleSubmit}>
+        <div className="AppointmentForm w-100 ">
+            <form className="w-100 mb-5 mt-5 bx-shadow bg-white p-5" onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label htmlFor='date'>
                         Día
@@ -67,12 +69,20 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                     <label htmlFor='patient'>
                         Paciente
                     </label>
-                    <Select
-                        options={patients}
-                        onChange={name => handleChange(name)}
-                        className={`form-control ${errorClassName}`}
+                    <Row>
+                        <Col>
+                            <Select
+                                options={patients}
+                                onChange={handleChange}
+                                className={`form-control clean ${errorClassName}`}
 
-                    />
+                            />
+                        </Col>
+                        <Col>
+                            <Link className='btn btn-block btn-submit text-white' to="/patients/create">Nuevo Paciente</Link>
+                        </Col>
+                    </Row>
+
                 </div>
 
                 <div className='form-group mb4'>
@@ -82,7 +92,7 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                     <Select
                         options={professionals}
                         onChange={handleChange}
-                        className={`form-control ${errorClassName}`}
+                        className={`form-control clean ${errorClassName}`}
                     />
                 </div>
 
@@ -93,13 +103,13 @@ const AppointmentForm = ({ errorClassName, handleSubmit, handleChange, loading, 
                     <Select
                         options={treatmentConst}
                         onChange={handleChange}
-                        className={`form-control ${errorClassName}`}
+                        className={`form-control clean ${errorClassName}`}
                     />
                 </div>
 
                 <button
                     type='submit'
-                    className='btn btn-block btn-primary mb-3'
+                    className='btn btn-block btn-submit text-white mb-3'
                     disabled={loading}
                 >
                     Añadir

@@ -12,13 +12,16 @@ import PatientForm from './components/PatientForm'
 import ShowPatients from './components/ShowPatients'
 import AppointmentForm from './components/AppointmentForm'
 import MHForm from './components/MHForm'
+import AppointmentDetail from './components/AppointmentDetail'
+import EditProfessional from './components/EditProfessional'
+import ShowProfessionals from './components/ShowProfessionals'
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
         <Navbar />
-        <main className='container'>
+        <main className='container body-app'>
           <Switch>
             <AuthenticatedRoute exact path='/'>
               <Home />
@@ -35,7 +38,12 @@ class App extends React.Component {
             <AuthenticatedRoute exact path='/patients'>
               <ShowPatients />
             </AuthenticatedRoute>
+            <AuthenticatedRoute exact path='/professionals'>
+              <ShowProfessionals />
+            </AuthenticatedRoute>
             <AuthenticatedRoute exact path='/patients/:id/medicalhistory' component={MHForm} />
+            <AuthenticatedRoute exact path='/appointments/:id' component={AppointmentDetail} />
+            <AuthenticatedRoute exact path='/professionals/:id' component={EditProfessional} />
 
 
 

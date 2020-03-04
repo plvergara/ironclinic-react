@@ -9,3 +9,97 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.App {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(154, 211, 219, 0.3) 30%,
+    rgb(10, 153, 173)
+  ) !important;
+  height: auto;
+}
+
+.Login {
+  border: 1px solid;
+  border-color: rgba(224, 224, 224, 1);
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+  height: auto;
+  width: 50%;
+  background-color: white;
+  align-self: center;
+}
+
+.body-app {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  min-height: 95vh;
+}
+
+.LoginForm {
+  width: 100%;
+  padding: 50px;
+  margin: 0 auto;
+}
+
+.btn-submit {
+  background-color: rgb(10, 153, 173) !important;
+  border-color: rgb(10, 153, 173) !important;
+  margin: 0 auto;
+}
+
+.fa {
+  width: 15%;
+  color: rgba(154, 211, 219, 1);
+}
+
+.bx-shadow {
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.b-radius {
+  border-radius: 0.25rem;
+}
+
+.navbar-brand {
+  color: rgb(10, 153, 173) !important;
+}
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.color-w {
+  color: white !important;
+}
+
+.Appointments {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: flex-start;
+}
+.PatientsList,
+.Professionals,
+.Patients,
+.ProfessionalsList {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+}
+.ProfessionalCard,
+.PatientCard {
+  width: 15rem;
+  margin: 3rem;
+}
+
+.form-control.clean {
+  border: none !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.upper {
+  text-transform: uppercase;
+}

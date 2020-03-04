@@ -1,6 +1,8 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
 import IronClinicService from '../services/IronClinicService'
+import { Card } from 'react-bootstrap'
+import PatientCard from '../ui/PatientCard'
 
 class ListPatients extends React.Component {
     state = {
@@ -16,14 +18,11 @@ class ListPatients extends React.Component {
     render() {
         return (
             <div className="Patients">
-                {this.state.patients.map((patient, i) => (
-                    <div>
-                        <p>{patient.firstName}</p>
-                        <p>{patient.lastName}</p>
-                        <p>{patient.number}</p>
-                        <p>{patient.identification.number}</p>
-                    </div>
-                ))}
+                <div className="PatientsList">
+                    {this.state.patients.map((patient, i) => (
+                        <PatientCard patient={patient} key={i} />
+                    ))}
+                </div>
             </div>
         )
     }
