@@ -14,11 +14,11 @@ const ListAppointments = ({ appointment }) => {
                     <span className="h6 col-4 text-light">{day.getDate().toString().padStart(2, 0)}/{(day.getMonth() + 1).toString().padStart(2, 0)}/{day.getUTCFullYear()}</span>
                 </Card.Title>
 
-                <Card.Text>
-                    <span>{patient.firstName} {patient.lastName}</span><br />
-                    <span>{professional.firstName} {professional.lastName}</span><br />
-                    <span>{treatment}</span>
-                </Card.Text>
+
+                <Card.Text>{patient.firstName} {patient.lastName}</Card.Text>
+                <Card.Text>{professional.firstName} {professional.lastName}</Card.Text>
+                <Card.Text>{treatment}</Card.Text>
+                <Card.Text >{appointment.price} €</Card.Text>
                 {patient.number && (
                     <Link to={`/appointments/${appointment.id}`} className="btn btn-submit text-white">Ir</Link>
                 )}

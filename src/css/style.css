@@ -81,17 +81,20 @@ input[type='number'] {
   align-items: flex-start;
 }
 .PatientsList,
-.Professionals,
-.Patients,
 .ProfessionalsList {
   display: flex;
   justify-content: space-around;
   align-content: space-around;
+  flex-wrap: wrap;
 }
 .ProfessionalCard,
 .PatientCard {
-  width: 15rem;
+  width: 20rem;
   margin: 3rem;
+}
+.MHCard {
+  width: 100%;
+  margin: 3rem 0rem;
 }
 
 .form-control.clean {

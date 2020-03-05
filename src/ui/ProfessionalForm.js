@@ -1,7 +1,7 @@
 import React from 'react'
 import { WithAuthConsumer } from '../context/AuthContext'
 
-const ProfessionalForm = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, password, firstName, lastName, specialty }) => {
+const ProfessionalForm = ({ errorClassName, handleSubmit, handleChange, loading, cNumber, firstName, lastName, specialty }) => {
     return (
         <div className="ProfessionalForm w-100">
             <form className="w-100 mb-5 mt-5 bx-shadow bg-white p-5" onSubmit={handleSubmit}>
@@ -76,7 +76,6 @@ const ProfessionalForm = ({ errorClassName, handleSubmit, handleChange, loading,
                     </label>
 
                     <input
-                        value={password}
                         onChange={handleChange}
                         name='password'
                         type='password'

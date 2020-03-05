@@ -29,7 +29,7 @@ class Home extends React.Component {
 
         IronClinicService.listADate(dayString)
             .then(appointments => {
-                this.setState({ appointments, loading: false })
+                return this.setState({ appointments, loading: false })
             })
 
     }
@@ -65,7 +65,6 @@ class Home extends React.Component {
     }
 
     render() {
-
         return (
             <div className="Home w-100">
                 <Filter
@@ -73,7 +72,7 @@ class Home extends React.Component {
                     options={this.state.professionals} />
                 <div className="Appointments">
                     {this.state.appointments.map((appointment, i) => (
-                        <Appointment appointment={appointment} key={i} />
+                        < Appointment appointment={appointment} key={i} />
                     ))}
                 </div>
             </div>

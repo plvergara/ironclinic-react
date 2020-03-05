@@ -12,6 +12,9 @@ const PatientCard = ({ patient }) => {
                 <Card.Text>
                     <b className="upper">{patient.identification.format}</b> {patient.identification.number}
                 </Card.Text>
+                <Card.Text>
+                    <b className="upper">tel</b> {patient.phoneNumber}
+                </Card.Text>
                 <Link to={`/patients/${patient.id}`} className="btn btn-submit text-white">Editar</Link>
 
             </Card.Body>

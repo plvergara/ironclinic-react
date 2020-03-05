@@ -36,7 +36,7 @@ const createPatient = data => {
 }
 const listPat = _ => http.get('/patients')
 const listPatient = data => http.get(`/patients/${data}`)
-const updatePatient = (id, data) => http.patch(`/patients/${id}`, data)
+const updatePatient = (data) => http.patch(`/patients/${data.id}`, data)
 
 const createAppointment = data => http.post('/appointments', data)
 const listAppointment = id => http.get(`/appointments/${id}`)
